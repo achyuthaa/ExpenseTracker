@@ -8,6 +8,64 @@ html {
   }
 }
 
+html{
+    font-family: "Inter";
+    min-height: 100%;
+    position: relative;
+
+}
+
+*:not(.fa-brands):not(.fa):not(.e-icons){
+    font-family: "Inter";
+
+}
+
+/*Grid*/
+/* Target the ejs-grid container */
+ejs-grid {
+    font-family: Arial, sans-serif;
+}
+
+    /* Style the grid header */
+    ejs-grid .e-headercell {
+        background-color: #f0f0f0;
+        color: #333;
+        font-weight: bold;
+        border-bottom: 1px solid #ccc;
+    }
+
+    /* Style the grid rows */
+    ejs-grid .e-row {
+        border-bottom: 1px solid #eee;
+    }
+
+        /* Style alternating rows */
+        ejs-grid .e-row:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+    /* Style the grid cell */
+    ejs-grid .e-cell {
+        padding: 8px;
+    }
+
+    /* Style the grid column headers */
+    ejs-grid .e-columnheader {
+        text-align: center;
+    }
+
+    /* Style the grid actions column */
+    ejs-grid .e-actions {
+        text-align: center;
+    }
+
+    /* Style hover effect on rows */
+    ejs-grid .e-row:hover {
+        background-color: #4A354F;
+        cursor: pointer;
+    }
+
+
 html {
   position: relative;
   min-height: 100%;
@@ -15,4 +73,21 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: #12161d;
+  color: #fff;
 }
+.e-bigger {
+    font-size: x-large;
+}
+.e-btn-group{
+    width: 100%;
+}
+
+.e-btn-group .custom-rbt-group{
+    width: 50%;
+}
+.widget {
+    border-radius: 1rem;
+    background-color: #4A354F;
+}
+
