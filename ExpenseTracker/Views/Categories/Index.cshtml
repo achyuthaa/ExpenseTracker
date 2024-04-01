@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<ExpenseTracker.Models.Category>
 
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["PageTitle"] = "Categories";
+    ViewData["PageActionUrl"] = "/Categories/AddorEdit";
+    ViewData["PageActionText"] = "+ New Category";
+    ViewData["CurrentController"] = "Categories";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="AddorEdit">Create New</a>
-</p>
 <div class="row">
     <div class="col-md-7">
  <ejs-grid id="Grid" dataSource="@Model" gridLines="None" allowPaging="true" allowSorting="true">
@@ -39,8 +38,14 @@
 </script>
 <script id="templateedit" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
-        <a class="btn btn-sm" href="/Categories/AddorEdit/${CategoryId}">
+        <a class="btn btn-sm no-a-decoration" href="/Categories/AddorEdit/${CategoryId}">
         <i class="fa fa-pen fa-lg"></i>
         </a>
+        <form action="/Categories/Delete/${CategoryId}" method="post">
+            @Html.AntiForgeryToken()
+        <button class="btn btn-sm no-a-decoration bg-danger" href="/Categories/Delete/${CategoryId}" onclick="return confirm(&quot Are you sure to delete this?&quot;)">
+            <i class="fa fa-trash-can fa-lg"></i>
+            </button>
+            </form>
         </div>
 </script>

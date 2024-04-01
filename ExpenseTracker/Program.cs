@@ -1,5 +1,6 @@
 using ExpenseTracker.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,8 +29,19 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
+var cultureInfo = new CultureInfo("en-US");
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
+app.UseEndpoints(endpoints =>
+{
+endpoints.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+    endpoints.MapControllerRoute(
+       name: "achyuth1",
+       pattern: "{Achyuth1}/{action=Index}/{id?}",
+       defaults: new { controller = "categories" });
+});
 app.Run();

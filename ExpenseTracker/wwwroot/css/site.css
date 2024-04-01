@@ -20,6 +20,16 @@ html{
 
 }
 
+/*button*/
+.btn:focus, .btn:active{
+    outline:none !important;
+    box-shadow:none;
+}
+.no-a-decoration, .no-a-decoration:hover{
+    text-decoration:none;
+    color:inherit;
+}
+
 /*Grid*/
 /* Target the ejs-grid container */
 ejs-grid {
@@ -82,6 +92,9 @@ body {
 .e-btn-group{
     width: 100%;
 }
+    .e-btn-group input[type="radio"]:checked + label {
+        color:black; /* Change this to the desired color */
+    }
 
 .e-btn-group .custom-rbt-group{
     width: 50%;
@@ -89,5 +102,11 @@ body {
 .widget {
     border-radius: 1rem;
     background-color: #4A354F;
+}
+.e-breadcrumb a , e-breadcrumb a:hover{
+    text-decoration: none !important;
+    color: inherit !important;
+
+
 }
 

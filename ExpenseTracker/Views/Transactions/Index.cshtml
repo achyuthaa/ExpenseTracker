@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ExpenseTracker.Models.Transaction>
+
+@{
+    ViewData["PageTitle"] = "Transactions";
+    ViewData["PageActionUrl"] = "/Transactions/AddorEdit";
+    ViewData["PageActionText"] = "+ New Transaction";
+    ViewData["CurrentController"] = "Transactions";
+}
+
+<div class="row">
+    <div class="col-md-7">
+        <ejs-grid id="Grid" dataSource="@Model" gridLines="None" allowPaging="true" allowSorting="true">
+            <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
+
+            <e-grid-columns>
+                <e-grid-column headerText="Category" field="TransactionWithIcon"></e-grid-column>
+                <e-grid-column headerText="Date" typeof="date" format="MMM-dd-yy" textalign="Left" field="Date" width="110px"></e-grid-column>
+                <e-grid-column headerText="Amount" field="CustomizeAmount" width="110px" textalign="Right"></e-grid-column>
+                <e-grid-column field="Actions" template="#templateedit"></e-grid-column>
+
+            </e-grid-columns>
+
+        </ejs-grid>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-brands fa-windows"></i>
+        </div>
+    </div>
+</div>
+<script id="templateedit" type="text/x-template">
+    <div class="d-flex flex-row justify-content-start">
+        <a class="btn btn-sm no-a-decoration" href="/Transactions/AddorEdit/${TransactionId}">
+        <i class="fa fa-pen fa-lg"></i>
+        </a>
+        <form action="/Transactions/Delete/${TransactionId}" method="post">
+    @Html.AntiForgeryToken()
+        <button class="btn btn-sm no-a-decoration bg-danger" href="/Transactions/Delete/${TransactionId}" onclick="return confirm(&quot Are you sure to delete this?&quot;)">
+            <i class="fa fa-trash-can fa-lg"></i>
+            </button>
+            </form>
+        </div>
+</script>
